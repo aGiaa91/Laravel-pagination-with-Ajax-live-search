@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Repositories\DataRepositoryEloquent;
+use Illuminate\Http\Request;
+
+class DataController extends Controller
+{
+    protected $dataRepository;
+
+    public function __construct(DataRepositoryEloquent $dataRepository)
+    {
+        $this->dataRepository = $dataRepository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+        {
+            $data = $this->dataRepository->where('title', 'like', '%'.$request->search.'%')->paginate(30);
+            if($request->ajax()) {
+                return response()->json($data);
+            }
+            return view('data.index', compact('data'));
+        }
