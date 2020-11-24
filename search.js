@@ -32,15 +32,6 @@ $(document).ready(function () {
                         tr += `<tr class="myTr">
                             <td class="num">${j}.</td>
                             <td class="filterable">${item.title}</td>
-                            <td>
-                                <form>
-                                    <div class='btn-group'>
-                                        <a href="data/${item.id}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                                        <a href="data/${item.id}/edit" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                                        <button type="submit" class="btn btn-danger btn-xs dlt"><i class="glyphicon glyphicon-trash"></i></button>
-                                    </div>
-                                </form>
-                            </td>
                         </tr>`;
                         j++;
                     });
